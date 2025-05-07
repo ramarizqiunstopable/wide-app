@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { NavLinks } from "./components/navLink";
+import { NavLinks } from "./components/NavLinks";
 import { MobileMenu } from "./components/MobileMenu";
-import { UseHamburgerButton } from "./hooks/useHambuger";
+import { UseHamburgerButton } from "./hooks/UseHamburgerButton";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
