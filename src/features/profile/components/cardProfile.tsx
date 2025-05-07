@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const UserProfileCard = () => {
   return (
@@ -13,20 +14,22 @@ export const UserProfileCard = () => {
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
           <div className="mt-2 sm:mt-0">
-            <CardTitle className="text-xl font-semibold">John Doe</CardTitle>
+            <CardTitle className="text-xl font-semibold">
+              Rizqi Ramadhanianto
+            </CardTitle>
             <Badge variant="secondary">Member</Badge>
           </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-3 text-sm sm:text-base">
-        <p className="text-gray-700">📧 john.doe@example.com</p>
-        <p className="text-gray-700">📍 New York, USA</p>
-        <Link
-          to="/"
-          className="inline-block text-blue-600 hover:underline mt-2"
-        >
-          ← Back to Home
-        </Link>
+        <p className="text-gray-700">📧 rizqi.doe@example.com</p>
+        <p className="text-gray-700">📍 Jakarta, INA</p>
+
+        <Button asChild>
+          <Link to="/" className="text-sm text-blue-600 hover:underline mt-2">
+            ← Back to Home
+          </Link>
+        </Button>
       </CardContent>
     </Card>
   );
