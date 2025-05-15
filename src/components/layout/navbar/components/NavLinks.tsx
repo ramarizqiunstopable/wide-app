@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export const NavLinks = () => (
   <ul className="flex space-x-4">
     <li>
-      <Link to="/" className="hover:underline">
-        Home
+      <Link to="/order" className="hover:underline">
+        Order Data
       </Link>
     </li>
     <li>

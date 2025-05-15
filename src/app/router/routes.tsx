@@ -1,4 +1,5 @@
 import App from "@/App";
+import OrderForm from "@/features/order/input-order";
 import FormWide from "@/pages/FormWide";
 import { Home } from "@/pages/HomeWide";
 
@@ -11,6 +12,7 @@ export const routes = [
     children: [
       { path: "/", element: <Home /> },
 
+      { path: "/order", element: <OrderForm /> },
       { path: "/profile", element: <Profile /> },
       { path: "/form", element: <FormWide /> },
     ],

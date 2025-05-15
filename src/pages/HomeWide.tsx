@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Counter from "@/features/counter";
+
 import { Link } from "react-router-dom";
 
 export const Home = () => {

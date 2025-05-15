@@ -17,6 +17,15 @@ export const MobileMenu = ({
     </li>
     <li>
       <Link
+        to="/order"
+        onClick={() => setIsOpen(false)}
+        className="block hover:underline"
+      >
+        Order Data
+      </Link>
+    </li>
+    <li>
+      <Link
         to="/Form"
         onClick={() => setIsOpen(false)}
         className="block hover:underline"
