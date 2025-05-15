@@ -6,7 +6,7 @@ const STORAGE_KEY = "orders";
 export const useOrder = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
-  // 🔁 Load orders from sessionStorage saat pertama kali mount
+  // 🔁 Load awal dari sessionStorage
   useEffect(() => {
     const stored = sessionStorage.getItem(STORAGE_KEY);
     if (stored) {

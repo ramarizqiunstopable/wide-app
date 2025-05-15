@@ -8,11 +8,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { useListOrder } from "../hooks/useListOrder";
+import { useOrder } from "@/features/order/hooks/useOrder";
 
 export const TableListOrder = () => {
-  const { orders } = useListOrder();
-  console.log(orders);
+  const { orders, deleteOrder } = useOrder();
 
   return (
     <div className="rounded-xl border p-4 shadow-sm">
@@ -49,7 +48,11 @@ export const TableListOrder = () => {
                     <Button size="sm" variant="outline">
                       Edit
                     </Button>
-                    <Button size="sm" variant="destructive">
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => deleteOrder(order.id)}
+                    >
                       Hapus
                     </Button>
                   </TableCell>
