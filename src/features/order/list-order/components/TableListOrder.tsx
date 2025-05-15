@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { useOrder } from "@/features/order/hooks/useOrder";
+import { useOrder } from "../../hooks/useOrder";
 
 export const TableListOrder = () => {
   const { orders, deleteOrder } = useOrder();
