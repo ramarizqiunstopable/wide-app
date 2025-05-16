@@ -1,4 +1,5 @@
 import App from "@/App";
+import OrderDetailPage from "@/features/order/detail-order";
 import FormWide from "@/pages/FormWide";
 import { Home } from "@/pages/HomeWide";
 import OrderWide from "@/pages/OrderWide";
@@ -13,6 +14,7 @@ export const routes = [
       { path: "/", element: <Home /> },
 
       { path: "/order", element: <OrderWide /> },
+      { path: "/order/:id", element: <OrderDetailPage /> }, // ⬅️ tambahkan ini
       { path: "/profile", element: <Profile /> },
       { path: "/form", element: <FormWide /> },
     ],
