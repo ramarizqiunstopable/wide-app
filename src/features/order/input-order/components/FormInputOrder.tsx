@@ -132,10 +132,10 @@ const FormInputOrder = () => {
       </Button>
 
       {/* Total Harga */}
-      <Card className="p-4 bg-muted rounded-xl">
+      <Card className="p-4 bg-emerald-200 rounded-xl">
         <div className="flex justify-between items-center">
           <p className="text-base font-medium text-muted-foreground">
-            Total Seluruh:
+            Grandtotal:
           </p>
           <p className="text-xl font-bold text-primary">
             Rp {totalHarga.toLocaleString()}
