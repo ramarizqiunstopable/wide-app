@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { useOrder } from "../../hooks/useOrder";
 import { FiEdit, FiTrash2, FiEye } from "react-icons/fi"; // Import icon
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const TableListOrder = () => {
   const { orders, deleteOrder } = useOrder();
@@ -56,13 +56,16 @@ export const TableListOrder = () => {
                     >
                       <FiEye size={16} />
                     </Button>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
-                    >
-                      <FiEdit size={16} />
-                    </Button>
+                    <Link to={`/update-order/${order.id}`}>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
+                      >
+                        <FiEdit size={16} />
+                      </Button>
+                    </Link>
+
                     <Button
                       size="icon"
                       variant="ghost"
