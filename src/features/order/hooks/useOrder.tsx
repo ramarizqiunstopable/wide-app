@@ -7,7 +7,7 @@ const STORAGE_KEY = "orders";
 export const useOrder = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
-  // ✅ Load awal + listener perubahan dari storage
+  // Load awal + listener perubahan dari storage
   useEffect(() => {
     const loadOrders = () => {
       const stored = sessionStorage.getItem(STORAGE_KEY);
@@ -30,20 +30,20 @@ export const useOrder = () => {
     };
   }, []);
 
-  // ✅ Simpan dan trigger event global
+  //  Simpan dan trigger event global
   const syncAndTrigger = (updated: Order[]) => {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     window.dispatchEvent(new Event("orders-updated")); // semua komponen yang pakai useOrder akan update
     setOrders(updated);
   };
 
-  // ✅ Tambah
+  //  Tambah
   const addOrder = (order: Order) => {
     const updated = [...orders, order];
     syncAndTrigger(updated);
   };
 
-  // 🔄 Update
+  //  Update
   const updateOrder = (updatedOrder: Order) => {
     const updated = orders.map((o) =>
       o.id === updatedOrder.id ? updatedOrder : o
@@ -51,13 +51,13 @@ export const useOrder = () => {
     syncAndTrigger(updated);
   };
 
-  // ❌ Hapus
+  //  Hapus
   const deleteOrder = (id: string) => {
     const updated = orders.filter((o) => o.id !== id);
     syncAndTrigger(updated);
   };
 
-  // 🔍 Ambil by ID
+  //  Ambil by ID
   const getOrderById = (id: string) => {
     return orders.find((o) => o.id === id);
   };
