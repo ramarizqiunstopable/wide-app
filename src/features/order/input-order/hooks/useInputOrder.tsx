@@ -11,32 +11,30 @@ export const useInputOrder = () => {
     {
       id: generateId(),
       name: "",
-      quantity: 1,
-      unitPrice: 0,
+      quantity: "",
+      unitPrice: "",
       totalPrice: 0,
     },
   ]);
 
-  const updateItem = (
-    id: string,
-    field: keyof OrderItem,
-    value: string | number
-  ) => {
+  const updateItem = (id: string, field: keyof OrderItem, value: string) => {
     setItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              [field]: field === "name" ? value : Number(value),
-              totalPrice:
-                field === "quantity"
-                  ? Number(value) * item.unitPrice
-                  : field === "unitPrice"
-                  ? item.quantity * Number(value)
-                  : item.totalPrice,
-            }
-          : item
-      )
+      prev.map((item) => {
+        if (item.id !== id) return item;
+
+        const updated = {
+          ...item,
+          [field]: value,
+        };
+
+        const quantityNum = parseFloat(updated.quantity) || 0;
+        const unitPriceNum = parseFloat(updated.unitPrice) || 0;
+
+        return {
+          ...updated,
+          totalPrice: quantityNum * unitPriceNum,
+        };
+      })
     );
   };
 
@@ -46,8 +44,8 @@ export const useInputOrder = () => {
       {
         id: generateId(),
         name: "",
-        quantity: 1,
-        unitPrice: 0,
+        quantity: "",
+        unitPrice: "",
         totalPrice: 0,
       },
     ]);
@@ -64,8 +62,8 @@ export const useInputOrder = () => {
       {
         id: generateId(),
         name: "",
-        quantity: 1,
-        unitPrice: 0,
+        quantity: "",
+        unitPrice: "",
         totalPrice: 0,
       },
     ]);

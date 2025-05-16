@@ -36,13 +36,19 @@ const FormInputOrder = () => {
     resetForm();
   };
 
+  const totalHarga = items.reduce((sum, item) => sum + item.totalPrice, 0);
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 border rounded-md">
-      <h2 className="text-2xl font-semibold">Tambah Order</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 p-6 border rounded-xl shadow-sm bg-white"
+    >
+      <h2 className="text-2xl font-bold text-gray-800">Tambah Order</h2>
 
       <div className="space-y-2">
-        <Label>Nama Order</Label>
+        <Label htmlFor="nama-order">Nama Order</Label>
         <Input
+          id="nama-order"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -52,8 +58,9 @@ const FormInputOrder = () => {
       </div>
 
       <div className="space-y-2">
-        <Label>Tanggal Order</Label>
+        <Label htmlFor="tanggal-order">Tanggal Order</Label>
         <Input
+          id="tanggal-order"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
@@ -61,37 +68,51 @@ const FormInputOrder = () => {
         />
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-2">
         {items.map((item, index) => (
-          <Card key={item.id} className="p-4 space-y-2">
-            <p className="font-medium">Item {index + 1}</p>
-            <Input
-              placeholder="Nama Item"
-              value={item.name}
-              onChange={(e) => updateItem(item.id, "name", e.target.value)}
-              required
-            />
-            <Input
-              type="number"
-              placeholder="Jumlah"
-              value={item.quantity}
-              onChange={(e) =>
-                updateItem(item.id, "quantity", Number(e.target.value))
-              }
-              min={1}
-              required
-            />
-            <Input
-              type="number"
-              placeholder="Harga per unit"
-              value={item.unitPrice}
-              onChange={(e) =>
-                updateItem(item.id, "unitPrice", Number(e.target.value))
-              }
-              min={0}
-              required
-            />
-            <p>Total Harga: Rp {item.totalPrice.toLocaleString()}</p>
+          <Card
+            key={item.id}
+            className="p-4 space-y-2 shadow-sm border border-muted"
+          >
+            <p className="font-semibold text-muted-foreground">
+              Item {index + 1}
+            </p>
+
+            <div className="space-y-2">
+              <Input
+                placeholder="Nama Item"
+                value={item.name}
+                onChange={(e) => updateItem(item.id, "name", e.target.value)}
+                required
+              />
+
+              <div>
+                <Input
+                  type="number"
+                  placeholder="masukan Jumlah"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    updateItem(item.id, "quantity", e.target.value)
+                  }
+                  min={1}
+                  required
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="number"
+                  placeholder="Harga per unit"
+                  value={item.unitPrice}
+                  onChange={(e) =>
+                    updateItem(item.id, "unitPrice", e.target.value)
+                  }
+                  min={0}
+                  required
+                />
+              </div>
+            </div>
+
             {items.length > 1 && (
               <Button
                 type="button"
@@ -107,8 +128,20 @@ const FormInputOrder = () => {
       </div>
 
       <Button type="button" variant="outline" onClick={addItem}>
-        Tambah Item
+        + Tambah Item
       </Button>
+
+      {/* Total Harga */}
+      <Card className="p-4 bg-muted rounded-xl">
+        <div className="flex justify-between items-center">
+          <p className="text-base font-medium text-muted-foreground">
+            Total Seluruh:
+          </p>
+          <p className="text-xl font-bold text-primary">
+            Rp {totalHarga.toLocaleString()}
+          </p>
+        </div>
+      </Card>
 
       <div>
         <Button type="submit" className="w-full">
