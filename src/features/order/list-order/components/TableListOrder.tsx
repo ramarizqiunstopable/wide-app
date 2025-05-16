@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { useOrder } from "../../hooks/useOrder";
+import { FiEdit, FiTrash2, FiEye } from "react-icons/fi"; // Import icon
 
 export const TableListOrder = () => {
   const { orders, deleteOrder } = useOrder();
@@ -26,7 +27,7 @@ export const TableListOrder = () => {
               <TableHead>Nama</TableHead>
               <TableHead>Jumlah Item</TableHead>
               <TableHead>Total Harga</TableHead>
-              <TableHead>Aksi</TableHead>
+              <TableHead className="text-center">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -44,16 +45,28 @@ export const TableListOrder = () => {
                   <TableCell>{order.name}</TableCell>
                   <TableCell>{order.items.length} item</TableCell>
                   <TableCell>Rp {totalHarga.toLocaleString()}</TableCell>
-                  <TableCell className="space-x-2">
-                    <Button size="sm" variant="outline">
-                      Edit
+                  <TableCell className="flex justify-center space-x-2">
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200"
+                    >
+                      <FiEye size={16} />
                     </Button>
                     <Button
-                      size="sm"
-                      variant="destructive"
+                      size="icon"
+                      variant="ghost"
+                      className="rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
+                    >
+                      <FiEdit size={16} />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="rounded-full bg-red-100 text-red-600 hover:bg-red-200"
                       onClick={() => deleteOrder(order.id)}
                     >
-                      Hapus
+                      <FiTrash2 size={16} />
                     </Button>
                   </TableCell>
                 </TableRow>
